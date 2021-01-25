@@ -21,7 +21,8 @@ export class PanelService {
       })
 
     };
-    return this.http.post(this.apiUrl+'panel/new',panel,httpOptions);  
+    console.log(this.apiUrl, panel, httpOptions);
+    return this.http.post(this.apiUrl+'/panel/new',panel,httpOptions);  
 
   }
 
@@ -46,7 +47,7 @@ export class PanelService {
       })
 
     };
-       return  this.http.delete<any>(this.apiUrl+`/panel/delete/${id}`,httpOptions);
+       return  this.http.delete<any>(this.apiUrl+'/panel/delete/${id}',httpOptions);
       
   }
 
@@ -59,7 +60,7 @@ export class PanelService {
       })
 
     };
-       return  this.http.get<any>(this.apiUrl+`/panel/globals`,httpOptions);
+       return  this.http.get<any>(this.apiUrl+'/panel/globals',httpOptions);
   }
 
   myPanels()
@@ -71,6 +72,6 @@ export class PanelService {
       })
 
     };
-       return  this.http.get<any>(this.apiUrl+`/panel/myPanels`,httpOptions);
+       return  this.http.get<any>(this.apiUrl+'/panel/myPanels',httpOptions);
   }
 }

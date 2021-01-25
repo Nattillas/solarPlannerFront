@@ -20,9 +20,11 @@ export class PanelListComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.myPanels().subscribe(
-      p=>{this.panels=p;
-        }
-      ,err=>{console.log(err)}
+      p=>{
+        this.panels=p;
+        console.log("ngOnInit", this.panels);
+      }
+      ,err=>{console.log('panel-list ngOnInit error', err)}
     );
   }
 
@@ -30,7 +32,7 @@ export class PanelListComponent implements OnInit {
   newPanel(){
     const dialogRef = this.dialog.open(NewPanelDialog, {
       width: '250px',
-      data: {name: this.name, height: this.height,width:this.width,capacity:this.capacity,technology:this.technology}
+      data: {name: this.name, height: this.height, width:this.width, capacity:this.capacity, technology:this.technology}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -39,14 +41,14 @@ export class PanelListComponent implements OnInit {
         if(!isNaN(result.height) && !isNaN(result.width) && !isNaN(result.capacity))
         {
           this.service.subscribePanel({'name':result.name,'width':result.width,'height':result.height,'capacity':result.capacity,'technology':result.technology,'type':'personal'}).subscribe(
-            
-            err =>{console.log(err);},
             p => {
               this.service.myPanels().subscribe(p =>{
-                console.log('ahla');
+                console.log('panel-list newPanel');
                 this.panels = p;
+                console.log("newPanel", this.panels);
               })
-            }
+            },
+            err =>{console.log('panel-list newPanel', err);}
           )
         }
         else{

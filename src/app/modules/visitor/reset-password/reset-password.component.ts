@@ -33,7 +33,7 @@ export class ResetPasswordComponent implements OnInit {
     {
     let body ={"password":password,"id":this.id};
       this.service.changePassword(body).subscribe((res) => {
-        console.log(res);
+        console.log('reset-password res', res);
         this.route.navigate(['/login']);
       })
     }

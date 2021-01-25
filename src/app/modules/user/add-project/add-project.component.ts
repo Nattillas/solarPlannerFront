@@ -111,7 +111,7 @@ export class AddProjectComponent implements OnInit {
   choosePanel(panel)
   {
     this.panel = panel;
-    console.log(panel);
+    console.log('add-project choosePanel',panel);
     this.stepTwo = true;
     return true;
   }
@@ -127,7 +127,7 @@ export class AddProjectComponent implements OnInit {
   }
 
   configChange(values:any){
-    console.log('h')
+    console.log('add-project configChange')
     this.autoconfig = !this.autoconfig;
     if(this.autoconfig){
       let p={points:this.area,panelId:this.panel._id}
@@ -154,12 +154,10 @@ export class AddProjectComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if(result && result.capacity && result.height && result.width && result.technology && result.technology)
       {
-        console.log(result);
+        console.log('add-project newPanel result', result);
         if(!isNaN(result.height) && !isNaN(result.width) && !isNaN(result.capacity))
         {
           this.panelService.subscribePanel({'name':result.name,'width':result.width,'height':result.height,'capacity':result.capacity,'technology':result.technology,'type':'personal'}).subscribe(
-            
-            err =>{console.log('errpr subscribing the panel');},
             p => {
               this.panelService.globals().subscribe(p =>{
                 this.panels = p;
@@ -167,7 +165,8 @@ export class AddProjectComponent implements OnInit {
               this.panelService.myPanels().subscribe(p =>{
                 this.panels = p;
               })
-            }
+            },
+            err =>{console.log('error subscribing the panel', err);}
           )
         }
         else{
@@ -195,7 +194,7 @@ export class AddProjectComponent implements OnInit {
       this.router.navigate(['projects', res['_id']])
       console.log(res);
     },(err)=>{
-      console.log(err);
+      console.log('add-project onSubmit', err);
     });
   }
 

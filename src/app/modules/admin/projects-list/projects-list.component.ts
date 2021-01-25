@@ -27,7 +27,7 @@ export class ProjectsListComponent implements OnInit {
     this.service.adminGetAllProject().subscribe(
       p=>{this.projects=p;
         }
-      ,err=>{console.log(err)}
+      ,err=>{console.log('projects-list error1 ngOnInit', err)}
     );
   }
   openDialog(project)
@@ -53,7 +53,7 @@ export class ProjectsListComponent implements OnInit {
       this.service.adminGetAllProject().subscribe(
         p=>{this.projects=p;
           }
-        ,err=>{console.log(err)}
+        ,err=>{console.log('projects-list error2 openDialog', err)}
       ); 
       }
     });

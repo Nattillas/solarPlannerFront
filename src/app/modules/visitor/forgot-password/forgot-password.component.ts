@@ -32,7 +32,7 @@ export class ForgotPasswordComponent implements OnInit {
         }
       
       },(err)=>{
-        console.log(err.error);
+        console.log('forgot-password error', err.error);
         this._snackBar.open(err.error,"close",{
           duration: 2000,
         });

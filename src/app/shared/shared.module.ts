@@ -20,6 +20,7 @@ import {MatTreeModule} from '@angular/material/tree';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import { ColumnComponent } from './widgets/column/column.component';
 import { MultiaxesComponent } from './widgets/multiaxes/multiaxes.component';
+import { MultiaxesComponentEmisiones } from './widgets/multiaxes/multiaxes.emisiones.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule, } from '@angular/forms';
@@ -38,6 +39,7 @@ import {MatInputModule} from '@angular/material/input';
     SplineComponent,
     ColumnComponent,
     MultiaxesComponent,
+    MultiaxesComponentEmisiones,
     ChangePassword,
   ],
   entryComponents:[
@@ -75,7 +77,8 @@ import {MatInputModule} from '@angular/material/input';
     MapComponent,
     SplineComponent,
     ColumnComponent,
-    MultiaxesComponent
+    MultiaxesComponent,
+    MultiaxesComponentEmisiones
   ]
 })
 export class SharedModule { }

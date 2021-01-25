@@ -36,15 +36,15 @@ export class PanelsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if(result && result.capacity && result.height && result.width && result.technology && result.technology)
       {
-        console.log('1')
+        console.log('panels newPanel 1')
         if(!isNaN(result.height) && !isNaN(result.width) && !isNaN(result.capacity))
         {
-          console.log('2');
+          console.log('panels newPanel 2');
           this.service.subscribePanel({'name':result.name,'width':result.width,'height':result.height,'capacity':result.capacity,'technology':result.technology}).subscribe(
             
-            err =>{console.log('tehshe');},
+            err =>{console.log('error', err);},
             p => {
-              console.log("taada");
+              console.log("panels newPanel");
               this.service.getAllPanels().subscribe(p =>{
                 this.panels = p;
               })
@@ -82,16 +82,16 @@ export class PanelsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((confirmed: boolean) => {
       if (confirmed) {
         this.service.deletePanel(panel._id).subscribe((res)=>{
-          this._snackBar.open(panel.name+" has been deleted successfuly","close",{
+          this._snackBar.open(panel.name + " has been deleted successfuly","close",{
             duration: 5000,
           });
       },(err)=>{
-        console.log(err);
+        console.log('panels afterClosed error1', err);
       });
       this.service.getAllPanels().subscribe(
         p=>{this.panels=p;
           }
-        ,err=>{console.log(err)}
+        ,err=>{console.log('panels afterClosed error2', err)}
       ); 
       }
     });

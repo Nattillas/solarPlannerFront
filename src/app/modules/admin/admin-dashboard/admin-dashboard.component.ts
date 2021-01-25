@@ -42,8 +42,9 @@ export class AdminDashboardComponent implements OnInit {
    
     
     this.service.getAdminDashboard().subscribe(
+      //que es p?
       p=>{
-        console.log(p);
+        console.log('admin-dashboard getAdminDashboard', p);
         p.projects.forEach(p => {
         this.markers.push(
           {
@@ -62,7 +63,7 @@ export class AdminDashboardComponent implements OnInit {
 
 
         }
-      ,err=>{console.log(err)}
+      ,err=>{console.log('admin-dashboard', err)}
     );
     this.service.getProjectsNumbers().subscribe(
       p=>{

@@ -42,7 +42,7 @@ export class UsersListComponent implements OnInit {
 
         });
         }
-      ,err=>{console.log(err)}
+      ,err=>{console.log('users-list error1', err)}
     );
   }
 
@@ -55,7 +55,7 @@ export class UsersListComponent implements OnInit {
         duration: 5000,
       });
   },(err)=>{
-    console.log(err);
+    console.log('users-list deleteUser error', err);
   }); 
   }
 
@@ -79,7 +79,7 @@ export class UsersListComponent implements OnInit {
             duration: 5000,
           });
       },(err)=>{
-        console.log(err);
+        console.log('users-list openDialog error', err);
       });
       this.service.getAllUsers().subscribe(
         u=>{
@@ -100,7 +100,7 @@ export class UsersListComponent implements OnInit {
   
           });
           }
-        ,err=>{console.log(err)}
+        ,err=>{console.log('users-list openDialog error2', err)}
       );
       }
     });

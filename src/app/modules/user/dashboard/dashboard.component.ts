@@ -75,7 +75,7 @@ export class DashboardComponent implements OnInit {
       this.total_prod = Number(p.total_prod).toFixed();
       this.projects_number = this.markers.length;
         }
-      ,err=>{console.log(err)}
+      ,err=>{console.log('dashboard error',err)}
     );
   }
 }

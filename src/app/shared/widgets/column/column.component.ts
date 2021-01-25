@@ -11,6 +11,7 @@ export class ColumnComponent implements OnInit {
 
   @Input('data') data:any;
   @Input('title') title:any;
+  @Input('emisiones') emisiones:any;
 
 
   Highcharts = Highcharts;
@@ -35,7 +36,7 @@ export class ColumnComponent implements OnInit {
     },
     yAxis: {
         title: {
-            text: 'Pv power generated (Kw)'
+            text: (this.emisiones == true) ? 'Kg CO2' : 'Pv power generated (Kw)'
         }
 
     },
@@ -54,12 +55,12 @@ export class ColumnComponent implements OnInit {
 
     tooltip: {
         headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f} KW</b><br/>'
+        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f} ' + (this.emisiones == true) ? 'Kg CO2' : 'KW' + '</b><br/>'
     },
 
     series: [
         {
-            name: "Power generated",
+            name: (this.emisiones == true) ? "Emisiones evitadas" : "Power generated",
             colorByPoint: true,
             data: this.data
         }

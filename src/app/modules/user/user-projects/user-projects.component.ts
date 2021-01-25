@@ -29,7 +29,7 @@ export class UserProjectsComponent implements OnInit {
     this.service.getAllProject().subscribe(
       p=>{this.projects=p;
         }
-      ,err=>{console.log(err)}
+      ,err=>{console.log('user-projects ngOnInit error', err)}
     );
   }
 
@@ -42,7 +42,7 @@ export class UserProjectsComponent implements OnInit {
         duration: 2000,
       });
   },(err)=>{
-    console.log(err);
+    console.log('user-projects deleteProjects error', err);
   }); 
   }
 
@@ -67,12 +67,12 @@ export class UserProjectsComponent implements OnInit {
             duration: 5000,
           });
       },(err)=>{
-        console.log(err);
+        console.log('user-projects afterClosed', err);
       });
       this.service.getAllProject().subscribe(
         p=>{this.projects=p;
           }
-        ,err=>{console.log(err)}
+        ,err=>{console.log('user-projects getAllProjects', err)}
       ); 
       }
     });

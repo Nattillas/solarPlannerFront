@@ -156,7 +156,7 @@
               <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                   <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total</div>
-                  <div class="h5 mb-0 font-weight-bold text-gray-800">{{estimations}}KW</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">{{estimations}} KW</div>
                 </div>
                 <div class="col-auto">
                   <i class="fas fa-chart-area fa-2x text-gray-300"></i>
@@ -165,21 +165,21 @@
             </div>
           </div>
         </div>
-    </div>
-    <app-widget-multiaxes *ngIf="azimuth[1]" fxFlex="57" [axe1]="pv_today" [axe2]="altitude" [axe3]="azimuth" [time]="sun_hours" ></app-widget-multiaxes>
+      </div>
     
-    <div fxLayout="raw wrap" fxFlex="20">  
+      <app-widget-multiaxes *ngIf="azimuth[1]" fxFlex="57" [axe1]="pv_today" [axe2]="altitude" [axe3]="azimuth" [time]="sun_hours" ></app-widget-multiaxes>
+    
+      <div fxLayout="raw wrap" fxFlex="20">  
         <app-widget-column fxFlex="100" *ngIf="forecast_data[0]" [data]="forecast_data" [title]="title1"  fxFlex.md='50'></app-widget-column> 
         <app-widget-column fxFlex="100" *ngIf="!forecast_data[0]" [data]="forecast_data" [title]= "title1"  fxFlex.md='50'></app-widget-column> 
         <br>
-       
         <div class="col-xl-4 col-md-6 mb-4" fxFlex="100" cdkDrag cdkDragLockAxis="y">
           <div class="card border-left-primary shadow h-100 py-2">
             <div class="card-body">
               <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                   <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total</div>
-                  <div class="h5 mb-0 font-weight-bold text-gray-800">{{forecast}}Kw</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">{{forecast}} Kw</div>
                 </div>
                 <div class="col-auto">
                   <i class="fas fa-chart-area fa-2x text-gray-300"></i>
@@ -190,18 +190,76 @@
         </div>
       </div>
     </div>
-   
    <br>
-   
-   
    <br>
-   
-
-   </mat-tab>
+  </mat-tab>
 
 
+  <mat-tab label="Emisiones evitables">
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" fxLayoutGap="10px" class="stats-cards">
+      <div fxLayout="raw wrap" fxFlex="20"> 
+        <app-widget-column fxFlex="100"  *ngIf="!estimation_emisiones_data[0]" [data]="estimation_emisiones_data" [title]="title3" [emisiones]=true fxFlex.md='50'></app-widget-column>
+        <app-widget-column fxFlex="100"  *ngIf="estimation_emisiones_data[0]" [data]="estimation_emisiones_data" [title]="title3"[emisiones]=true fxFlex.md='50'></app-widget-column>
+        <br>
+        <div class="col-xl-3 col-md-6 mb-4" fxFlex="100" cdkDrag cdkDragLockAxis="y">
+          <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">{{estimations_emisiones}} Kg CO2</div>
+                </div>
+                <div class="col-auto">
+                  <i class="fas fa-chart-area fa-2x text-gray-300"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-xl-4 col-md-6 mb-4" fxFlex="100">  
+        <div>
+          <mat-form-field>
+            <mat-label>Coeficiente</mat-label>
+            <input #miCoeficiente matInput placeholder="Coeficiente" type="number" [(ngModel)]="coeficiente">
+          </mat-form-field>
+          <button mat-flat-button color="primary" (click)="reloadPlan()">
+            <span class="material-icons">restore</span>
+            Recalcular
+          </button> 
+        </div>
+        <div>
+          <app-widget-multiaxes-emisiones *ngIf="pv_today_emisiones[1]" fxFlex="100" [axe1]="pv_today_emisiones" [time]="sun_hours" ></app-widget-multiaxes-emisiones>
+        </div>
+      </div>
 
-   <mat-tab label="Panel">
+      <div fxLayout="raw wrap" fxFlex="20">  
+        <app-widget-column fxFlex="100" *ngIf="forecast_emisiones_data[0]" [data]="forecast_emisiones_data" [title]="title4" [emisiones]=true fxFlex.md='50'></app-widget-column> 
+        <app-widget-column fxFlex="100" *ngIf="!forecast_emisiones_data[0]" [data]="forecast_emisiones_data" [title]= "title4" [emisiones]=true fxFlex.md='50'></app-widget-column> 
+        <br>
+        <div class="col-xl-4 col-md-6 mb-4" fxFlex="100" cdkDrag cdkDragLockAxis="y">
+          <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">{{forecast_emisiones}} Kg CO2</div>
+                </div>
+                <div class="col-auto">
+                  <i class="fas fa-chart-area fa-2x text-gray-300"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+  </mat-tab>
+
+  <mat-tab label="Panel">
     <div fxLayout="raw" fxLayout.xs="column" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
       <div fxFlex="25" fxLayout="raw wrap" >
         <div class="col-xl-3 col-md-6 mb-4" fxFlex="100" cdkDrag cdkDragLockAxis="y">
@@ -282,7 +340,7 @@
     
     </div>
 
-   </mat-tab>
+  </mat-tab>
 
   <mat-tab label="Plan"> 
     <button mat-flat-button color="primary" (click)="downloadPlan()"><span class="material-icons">

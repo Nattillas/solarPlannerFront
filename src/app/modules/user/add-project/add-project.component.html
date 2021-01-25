@@ -1,7 +1,7 @@
 <mat-horizontal-stepper linear #stepper>
 
   <mat-step  [completed]="stepone">
-    
+
     <ng-template matStepLabel>Choose the project area</ng-template>
     <agm-map [latitude]="center.lat" [longitude]="center.lng" (mapReady)="onMapReady($event)" >
     </agm-map>    

@@ -52,7 +52,7 @@ export class HeaderComponent implements OnInit {
           this._snackBar.open(err.error,"close",{
             duration: 5000,
           });
-          console.log(err);
+          console.log('header changePassword error', err);
         });
       }
     });

@@ -57,9 +57,9 @@ export class LandingPageComponent implements OnInit {
         that.numpan=res['numberOfPanels'];
         that.dir=res['direction'];
 
-        console.log(res);
+        console.log('landing-page res', res);
       },(err)=>{
-        console.log(err);
+        console.log('landing-page error', err);
       });
       
      

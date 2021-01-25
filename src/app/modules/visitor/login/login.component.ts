@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
       (userData) => {
         console.log(socialPlatform+" sign in data : " , userData);
         this.service.socialAuth(userData.token).subscribe(res => {
-          console.log(res);
+          console.log('login res', res);
           localStorage.setItem('token',res['token']);
           if(this.service.isLoggedUser())
           {
